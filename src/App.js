@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import config from './config';
 import UpdateUserForm from './UpdateUser';
+import UserProfile from './UserProfile';
 
 class App extends Component {
   constructor(props) {
@@ -33,9 +34,7 @@ class App extends Component {
 
         <UpdateUserForm submitAction={this.getGitHubData} /> { /* You can pass functions down for child components to invoke */ }
 
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.state.user.login && <UserProfile user={this.state.user}/>}
       </div>
     );
   }
