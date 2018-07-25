@@ -19,7 +19,7 @@ class App extends Component {
     request.get(`https://api.github.com/users/${user}?access_token=${config.github_token}`)
       .then(data =>
         this.setState(() => {
-          return { user: JSON.parse(data) }
+          return { user: JSON.parse(data) } // we need to pass the data we get back from request through JSON.parse() because it is returned as a string
         })
       );
   }
@@ -34,7 +34,7 @@ class App extends Component {
 
         <UpdateUserForm submitAction={this.getGitHubData} /> { /* You can pass functions down for child components to invoke */ }
 
-        {this.state.user.login && <UserProfile user={this.state.user}/>}
+        {this.state.user.login && <UserProfile user={this.state.user}/>} { /* this && syntax is a way we can optionally show a component; UserProfile will only be rendered if this.state.user.login is truthy */ }
       </div>
     );
   }

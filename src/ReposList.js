@@ -22,11 +22,11 @@ class ReposList extends Component {
       });
   }
 
-  componentWillUpdate() {
+  componentWillUpdate() { // This will re-reun this.getRepos() when React has determined that the data passed down from parent components has changed
     this.getRepos()
   }
 
-  componentDidMount() {
+  componentDidMount() { // This runs this.getRepos() after the component has been intially rendered
     this.getRepos()
   }
 
@@ -35,7 +35,7 @@ class ReposList extends Component {
       <div className="card-text">
         <h6>User's Repositories:</h6>
         <div className="list-group mt-2">
-          {this.state.repos.map(repo => <Repo key={repo.id} repo={repo} />)}
+          {this.state.repos.map(repo => <Repo key={repo.id} repo={repo} />)} { /* We can use .map on an array to create a Repo component for each item in that array */ }
         </div>
       </div>
     )
