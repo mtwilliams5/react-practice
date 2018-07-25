@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from 'request-promise';
 import logo from './logo.svg';
 import './App.css';
+import config from './config';
 import UpdateUserForm from './UpdateUser';
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
   }
 
   getGitHubData(user) {
-    request.get(`https://api.github.com/users/${user}`)
+    request.get(`https://api.github.com/users/${user}?access_token=${config.github_token}`)
       .then(data =>
         this.setState(() => {
           return { user: JSON.parse(data) }
